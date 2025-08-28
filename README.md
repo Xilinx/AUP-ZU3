@@ -30,13 +30,25 @@ cd pynq/sdbuild
 make checkenv
 ```
 
+The AUP-ZU3 comes in two configurations: 4GB and 8GB DDR4
+
+Each board is marked as 4G (4GB) and 8G (8GB)
+
+Run the corresponding makefile with `image-4gb` or `image-8gb` accordingly.
+
 In the root directory (`<LOCAL_AUP-ZU3_REPO>/`) run `make`.
 
 ```shell
-make 2>&1 | tee build.log
+make image-4gb 2>&1 | tee build.log
 ```
 
-Once the build has completed, if successful a SD card image will be available under the directory `<LOCAL_AUP-ZU3_REPO>/sdbuild/output/Pynq-ZU-3.1.1.img`.
+OR
+
+```shell
+make image-8gb 2>&1 | tee build.log
+```
+
+Once the build has completed, if successful a SD card image will be available under the directory `<LOCAL_AUP-ZU3_REPO>/sdbuild/output/AUP-ZU3-3.1.img`.
 
 Use Etcher or Win32DiskImager to write this image to an SD card.
 

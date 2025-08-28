@@ -1,0 +1,30 @@
+// Copyright (C) 2025 Advanced Micro Devices, Inc.
+// SPDX-License-Identifier: BSD-3-Clause
+
+/*
+ * dts file for AMD AUP-ZU3 base overlay
+ *
+ */
+
+/dts-v1/;
+/plugin/;
+/ {
+	fragment@1 {
+		target = <&amba>;
+		overlay2: __overlay__ {
+			axi_iic: i2c@80140000 {
+				#address-cells = <1>;
+				#size-cells = <0>;
+				clock-names = "s_axi_aclk";
+				clocks = <&usb_clk>;
+				compatible = "xlnx,axi-iic-2.1", "xlnx,xps-iic-2.1.a";
+				interrupt-names = "iic2intc_irpt";
+				interrupt-parent = <&gic>;
+				interrupts = <0 104 4>;
+				reg = <0x0 0x80140000 0x0 0x10000>;
+				label = "RPICAM";
+
+			};
+		};
+	};
+};

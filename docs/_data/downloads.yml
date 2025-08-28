@@ -1,0 +1,8 @@
+docs_list_title: downloads
+docs:
+
+- title: AUP-ZU3 image
+  url: http://www.pynq.io/boards.html
+  
+- title: AUP-ZU3 Vivado board files
+  url: https://github.com/RealDigitalOrg/aup-zu3-bsp
