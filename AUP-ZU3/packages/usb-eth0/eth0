@@ -1,0 +1,10 @@
+# Copyright (C) 2025 Advanced Micro Devices, Inc
+# SPDX-License-Identifier: BSD-3-Clause
+
+network:
+  version: 2
+  ethernets:
+    eth0:
+      dhcp4: true
+      addresses:
+        - 192.168.2.99/24

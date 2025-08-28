@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="{{ site.lang | default: "en-US" }}">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" type="image/x-icon" href="assets/images/favicon.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+
+{% seo %}
+    <link rel="stylesheet" href="{{ "/assets/css/style.css?v=" | append: site.github.build_revision | relative_url }}">
+    
+    <!--[if lt IE 9]>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <![endif]-->
+  </head>
+<div class="allcontent">
+  <body>
+<!--Top banner-->
+    <div class="pynq_container">
+      <img class="pynq_background" src="./images/banner.png">
+      <div class="pynq_banner_background">
+        <p class="pynq_banner_text">
+           AUP-ZU3 development board
+        </p>
+       </div>
+    </div>
+
+<!--Navigation bar-->
+    <div class="wrapper">
+      <header>
+
+        <div class="gallery">
+            <a href="./images/01_aup-zu3.png"></a>
+              <img src="./images/01_aup_zu3_t.png" width="250px">
+            </a>
+            <div class="caption">
+            <a href="./images/01_aup-zu3.png">(Click to enlarge)</a>
+            </div>
+        </div>
+        <p>
+          <div class="pynq_container2">
+            <label for="show-menu" class="menu-icon"><i class="fas fa-bars"></i></label>
+            <img class="pynq_background2" src="./images/banner.png">
+            <div class="pynq_banner_background2">
+              <p class="pynq_banner_text2">
+                 AUP-ZU3 development board
+              </p>
+             </div>
+          </div>
+        <div class="content">
+            <h3>Navigation</h3>
+              <ul>
+                <li><a href="./index.html">Home</a></h2></li>
+                <li><a href="./getting_started.html">Getting started</a></h2></li>
+                <li><a href="./overview.html">Board overview</a></h2></li>
+                <li><a href="./overlays.html">Overlays</a></h2></li>
+                <li><a href="./support.html">Support</a></li>
+                <li><a href="https://www.realdigital.org/hardware/aup-zu3">Documents and where to buy</a></li>
+              </ul>
+        
+<!--            <h3>Documents</h3>
+        
+              <ul>        
+                <li><a href="./pdf/PYNQ-ZU_ReferenceUser_Manual_v1_2.pdf">ZU User Manual</a></li>
+                <li><a href="https://www.tulembedded.com/FPGA/images/XUP-ZU5EG-20200824.pdf">ZU schematics (pdf)</a></li>
+              </ul>
+-->
+        </p>
+        {% if site.github.is_project_page %}
+        <!--<p class="view"><a href="{{ site.github.repository_url }}">View the Project on GitHub <small>{{ site.github.repository_nwo }}</small></a></p>-->
+        {% endif %}
+
+        {% if site.github.is_user_page %}
+        <!--<p class="view"><a href="{{ site.github.owner_url }}">View My GitHub Profile</a></p>-->
+        {% endif %}
+
+        {% if site.show_downloads %}
+          <h3>Downloads</h3>
+          <ul> <!-- class="downloads">-->
+            <li><a href="https://www.pynq.io/boards">AUP-ZU3 PYNQ image</a></li>
+            <li><a href="https://github.com/RealDigitalOrg/aup-zu3-bsp">AUP-ZU3 Vivado board files</a></li>
+
+          </ul>
+        </div>
+        {% endif %}
+      </header>
+
+      <section>
+
+      {{ content }}
+
+      </section>
+      
+      <footer>
+        <a class="buttons github" href="https://github.com/Zacarhay/PYNQ-ZU"><b>View on GitHub</b></a>
+      </footer>
+    </div>
+    <script src="{{ "/assets/js/scale.fix.js" | relative_url }}"></script>
+    {% if site.google_analytics %}
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+      ga('create', '{{ site.google_analytics }}', 'auto');
+      ga('send', 'pageview');
+    </script>
+    {% endif %}
+  </body>
+</div>
+</html>

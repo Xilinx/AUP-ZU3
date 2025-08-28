@@ -1,0 +1,1 @@
+../AUP-ZU3/petalinux_bsp/hardware_project/run_create_zynq_ultra_ps.tcl
