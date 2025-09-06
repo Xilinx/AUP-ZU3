@@ -4,7 +4,7 @@ layout: default
 
 # AUP-ZU3 development board
 
-The AUP-ZU3 is a Xilinx Zynq Ultrascale+ development board, designed to be used with the [PYNQ](http://www.pynq.io/) framework. The board has the following features:
+The AUP-ZU3 is a AMD Zynq Ultrascale+ development board, designed to be used with the [PYNQ](http://www.pynq.io/) framework. The board has the following features:
 
 * Zynq Ultrascale+ XCZU3EG
 * 4GB or 8GB DDR4
@@ -29,7 +29,7 @@ Once your board is up and running, go to the [AUP-ZU3 base overlay](./overlays.m
 
 ## PYNQ community
 
-For more information on what you can do with PYNQ, see the [PYNQ community](http://www.pynq.io/community.html) pages which showcase example PYNQ designs. You can try to port existing designs to your board, or check for any overlays that support the PYNQ-ZU. 
+For more information on what you can do with PYNQ, see the [PYNQ community](http://www.pynq.io/community.html) pages which showcase example PYNQ designs. You can try to port existing designs to your board, or check for any overlays that support the AUP-ZU3. 
 
 ---------------------------------------
 <p class="copyright">Copyright&copy; 2025 Advanced Micro Devices</p>
