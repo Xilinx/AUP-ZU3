@@ -27,15 +27,6 @@ Note that the Mini DisplayPort is connected to the PS, and is not directly part 
 
 Example notebooks are included in the `<Jupyter Dashboard>/base/video` directory on the board and show how to use the PS Mini-DisplayPort and MIPI interfaces. 
 
-### HDMI
-
-The PYNQ-ZU has dual-stacked HDMI in and HDMI out ports. The HDMI interfaces are connected to a HDMI PHY that supports up to 4K resolutions. 
-
-The HDMI IP is connected to PS DRAM. Video can be streamed from the HDMI *in* to memory, and from memory to HDMI *out*. This allows processing of
-video data from python, or writing an image or Video stream from Python to the HDMI out.
-
-Note that while Jupyter notebook supports embedded video, video captured from the HDMI will be in raw format and would not be suitable for playback in a notebook without appropriate encoding.
-
 ### MIPI
 
 The AUP-ZU3 has a MIPI (Mobile Industry Processor Interface) CSI (Camera Serial Interface) which is connected to a MIPI subsystem in the base overlay. 
