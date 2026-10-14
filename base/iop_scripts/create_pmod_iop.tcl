@@ -299,6 +299,9 @@ proc create_hier_cell_iop_pmod { parentCell nameHier } {
   assign_bd_address -offset 0x44A20000 -range 0x00010000 -target_address_space /${nameHier}/mb/Data [get_bd_addr_segs /${nameHier}/io_switch/S_AXI/S_AXI_reg] -force
   assign_bd_address -offset 0x41C00000 -range 0x00010000 -target_address_space /${nameHier}/mb/Data [get_bd_addr_segs /${nameHier}/timer/S_AXI/Reg] -force
 
+  # Disable MicroBlaze classic conversion to MicroBlaze-V
+  set_property CONFIG.C_ENABLE_CONVERSION {0} [get_bd_cells mb]
+
   # Restore current instance
   current_bd_instance $oldCurInst
 }

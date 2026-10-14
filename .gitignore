@@ -1,0 +1,6 @@
+*.log
+*.jou
+__pycache__/
+.ipynb_checkpoints/
+*.str
+base/base/

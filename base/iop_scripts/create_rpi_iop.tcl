@@ -545,6 +545,10 @@ proc create_hier_cell_iop_rpi { parentCell nameHier } {
   assign_bd_address -offset 0x41C00000 -range 0x00010000 -target_address_space /${nameHier}/mb/Data [get_bd_addr_segs /${nameHier}/timers_subsystem/timer_0/S_AXI/Reg] -force
   assign_bd_address -offset 0x41C10000 -range 0x00010000 -target_address_space /${nameHier}/mb/Data [get_bd_addr_segs /${nameHier}/timers_subsystem/timer_1/S_AXI/Reg] -force
   assign_bd_address -offset 0x40600000 -range 0x00010000 -target_address_space /${nameHier}/mb/Data [get_bd_addr_segs /${nameHier}/uartlite/S_AXI/Reg] -force
-# Restore current instance
+
+  # Disable MicroBlaze classic conversion to MicroBlaze-V
+  set_property CONFIG.C_ENABLE_CONVERSION {0} [get_bd_cells mb]
+
+  # Restore current instance
   current_bd_instance $oldCurInst
 }

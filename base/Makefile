@@ -13,7 +13,8 @@ all:  block_design bitstream dts check_timing
 
 hls_ip:
 	git submodule init && git submodule update
-	vivado -mode batch -source build_ip.tcl -notrace
+	./set_ip_list.sh
+	make -C ../pynq/boards/ZCU104/base/ hls_ip
 
 block_design: hls_ip
 	vivado -mode batch -source $(overlay_name).tcl -notrace -tclargs $(AUP_ZU3_DDR4_CONFIG)

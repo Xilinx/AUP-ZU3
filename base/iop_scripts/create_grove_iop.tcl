@@ -327,6 +327,9 @@ proc create_hier_cell_iop_grove { parentCell nameHier } {
   assign_bd_address -offset 0x41C00000 -range 0x00010000 -target_address_space /${nameHier}/mb/Data [get_bd_addr_segs /${nameHier}/timer0/S_AXI/Reg] -force
   assign_bd_address -offset 0x41C20000 -range 0x00010000 -target_address_space /${nameHier}/mb/Data [get_bd_addr_segs /${nameHier}/timer1/S_AXI/Reg] -force
 
+  # Disable MicroBlaze classic conversion to MicroBlaze-V
+  set_property CONFIG.C_ENABLE_CONVERSION {0} [get_bd_cells mb]
+
   # Restore current instance
   current_bd_instance $oldCurInst
 }
