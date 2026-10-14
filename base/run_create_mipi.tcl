@@ -144,12 +144,12 @@ proc create_hier_cell_mipi { parentCell nameHier } {
     CONFIG.C_DPHY_LANES {2} \
     CONFIG.C_EN_BG0_PIN0 {false} \
     CONFIG.C_EN_BG1_PIN0 {false} \
-    CONFIG.C_HS_LINE_RATE {672} \
-    CONFIG.C_HS_SETTLE_NS {149} \
+    CONFIG.C_HS_LINE_RATE {912} \
+    CONFIG.C_HS_SETTLE_NS {124} \
     CONFIG.DATA_LANE0_IO_LOC {AG3} \
     CONFIG.DATA_LANE1_IO_LOC {AG4} \
     CONFIG.DPY_EN_REG_IF {true} \
-    CONFIG.DPY_LINE_RATE {672} \
+    CONFIG.DPY_LINE_RATE {912} \
     CONFIG.HP_IO_BANK_SELECTION {64} \
     CONFIG.SupportLevel {1} \
   ] $mipi_csi2_rx_subsyst
