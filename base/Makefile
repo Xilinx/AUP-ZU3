@@ -1,10 +1,10 @@
-# Copyright (C) 2025 Advanced Micro Devices, Inc.
+# Copyright (C) 2022-2026 Advanced Micro Devices, Inc.
 # SPDX-License-Identifier: BSD-3-Clause
 
 overlay_name := base
 design_name := base
 
-AUP_ZU3_DDR4_CONFIG := 4
+AUP_ZU3_DDR4_CONFIG ?= 4
 
 all:  block_design bitstream dts check_timing
 	@echo
@@ -13,8 +13,7 @@ all:  block_design bitstream dts check_timing
 
 hls_ip:
 	git submodule init && git submodule update
-	./set_ip_list.sh
-	make -C ../pynq/boards/ZCU104/base/ hls_ip
+	$(MAKE) -C ../pynq/boards/ZCU104/base/ hls_ip
 
 block_design: hls_ip
 	vivado -mode batch -source $(overlay_name).tcl -notrace -tclargs $(AUP_ZU3_DDR4_CONFIG)
