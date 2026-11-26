@@ -4,11 +4,11 @@
 
 **Required tools:**
 
-* Ubuntu 22.04 LTS 64-bit host PC
+* Ubuntu 24.04 LTS 64-bit host PC
 * Passwordless SUDO privilege for the building user
 * Roughly 35GB of free space (build process only, not accounting for Xilinx tools)
 * At least 8GB of RAM (more is better)
-* AMD PetaLinux 2024.1 and Vivado 2024.1
+* AMD Vivado and Vitis 2025.2
 
 Retrieve the AUP-ZU3 board git into a NEW directory.
 
@@ -36,9 +36,11 @@ The AUP-ZU3 comes in two configurations: 4GB and 8GB DDR4
 
 Each board is marked as 4G (4GB) and 8G (8GB)
 
+Use a separate checkout for each memory size.
+
 Run the corresponding makefile with `image-4gb` or `image-8gb` accordingly.
 
-In the root directory (`<LOCAL_AUP-ZU3_REPO>/`) run `make`.
+In the root directory (`<LOCAL_AUP-ZU3_REPO>/`) run `make image-4gb` or `make image-8gb`.
 
 ```shell
 make image-4gb 2>&1 | tee build.log
@@ -50,9 +52,9 @@ OR
 make image-8gb 2>&1 | tee build.log
 ```
 
-Once the build has completed, if successful a SD card image will be available under the directory `<LOCAL_AUP-ZU3_REPO>/sdbuild/output/AUP-ZU3-3.1.img`.
+Once the build has completed, if successful a SD card image will be available under the directory `<LOCAL_AUP-ZU3_REPO>/AUP-ZU3-4.0.0.img`.
 
-To write the AUP-ZU3-3.1.img to an SD card follow the steps on in [PYNQ SD card documentation](https://pynq.readthedocs.io/en/latest/appendix/sdcard.html)
+To write the AUP-ZU3-4.0.0.img to an SD card follow the steps on in [PYNQ SD card documentation](https://pynq.readthedocs.io/en/latest/appendix/sdcard.html)
 
 Use [balenaEtcher](https://etcher.balena.io), [Win32DiskImager](https://win32diskimager.org), or directly through the Operating System to write this image to an SD card.
 

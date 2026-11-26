@@ -1,24 +1,39 @@
-// Copyright (C) 2025 Advanced Micro Devices, Inc.
-// SPDX-License-Identifier: BSD-3-Clause
-
-/include/ "system-conf.dtsi"
-#include <dt-bindings/phy/phy.h>
+/* AUP-ZU3 board-specific device-tree nodes (appended to the SDT base dts). */
 
 / {
-	model ="AUP-ZU3 v1.0";
-	
-	dp_clk:psgtr_dp_clock {
+	model = "AUP-ZU3 v1.0";
+
+	aliases {
+		i2c0 = &i2c0;
+		i2c1 = &i2c1;
+	};
+
+	reserved-memory {
+		#address-cells = <2>;
+		#size-cells = <2>;
+		ranges;
+		linux,cma {
+			compatible = "shared-dma-pool";
+			reusable;
+			size = <0x0 0x20000000>;
+			alignment = <0x0 0x2000>;
+			alloc-ranges = <0x0 0x0 0x0 0x80000000>;
+			linux,cma-default;
+		};
+	};
+
+	dp_clk: psgtr_dp_clock {
 		compatible = "fixed-clock";
 		#clock-cells = <0x00>;
 		clock-frequency = <27000000>;
 	};
 
-	usb_clk:psgtr_usb_clock {
+	usb_clk: psgtr_usb_clock {
 		compatible = "fixed-clock";
 		#clock-cells = <0x00>;
 		clock-frequency = <100000000>;
 	};
-	
+
 	leds {
 		compatible = "gpio-leds";
 
@@ -46,6 +61,18 @@
 			gpio-key,wakeup;
 		};
 	};
+
+	dpcon {
+		compatible = "dp-connector";
+		label = "DP";
+		type = "full-size";
+
+		port {
+			dpcon_in: endpoint {
+				remote-endpoint = <&dpsub_dp_out>;
+			};
+		};
+	};
 };
 
 &sdhci0 {
@@ -54,21 +81,26 @@
 };
 
 &psgtr {
-      /* dp 0-1, usb0, usb1 */
-      clocks = <&dp_clk>, <&usb_clk>;
-      clock-names = "ref0", "ref1";
+	/* dp 0-1, usb0, usb1 */
+	clocks = <&dp_clk>, <&usb_clk>;
+	clock-names = "ref0", "ref1";
 };
 
 &zynqmp_dpsub {
 	status = "okay";
-	phys = <&psgtr 1 PHY_TYPE_DP 0 0>, <&psgtr 0 PHY_TYPE_DP 1 0>;
+	phys = <&psgtr 1 6 0 0>, <&psgtr 0 6 1 0>;
 	phy-names = "dp-phy0", "dp-phy1";
 };
 
+&out_dp {
+	dpsub_dp_out: endpoint {
+		remote-endpoint = <&dpcon_in>;
+	};
+};
+
 &usb0 {
-	/* USB Gadget*/
 	status = "okay";
-	phys = <&psgtr 2 PHY_TYPE_USB3 0 1>;
+	phys = <&psgtr 2 4 0 1>;
 	phy-names = "usb3-phy";
 };
 
@@ -85,7 +117,7 @@
 
 &usb1 {
 	status = "okay";
-	phys = <&psgtr 3 PHY_TYPE_USB3 1 1>;
+	phys = <&psgtr 3 4 1 1>;
 	phy-names = "usb3-phy";
 };
 
@@ -99,5 +131,3 @@
 	snps,dis_u2_susphy_quirk;
 	snps,dis_u3_susphy_quirk;
 };
-
-

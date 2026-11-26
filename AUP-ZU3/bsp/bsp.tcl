@@ -27,7 +27,7 @@ set ddr4_config [lindex $argv 0]
 ################################################################
 # Check if script is running in correct Vivado version.
 ################################################################
-set scripts_vivado_version 2024.1
+set scripts_vivado_version 2025.2
 set current_vivado_version [version -short]
 
 if { [string first $scripts_vivado_version $current_vivado_version] == -1 } {
@@ -50,7 +50,7 @@ if { [string first $scripts_vivado_version $current_vivado_version] == -1 } {
 
 # CHANGE DESIGN NAME HERE
 variable design_name
-set design_name aupzu3
+set design_name bsp
 
 set list_projs [get_projects -quiet]
 if { $list_projs eq "" } {
@@ -246,3 +246,13 @@ proc create_root_design { parentCell } {
 create_root_design ""
 
 
+
+validate_bd_design
+set bd_file [get_files ${design_name}.bd]
+set_property synth_checkpoint_mode None $bd_file
+generate_target all $bd_file
+make_wrapper -files $bd_file -top
+add_files -norecurse ./${design_name}/${design_name}.srcs/sources_1/bd/${design_name}/hdl/${design_name}_wrapper.v
+set_property top ${design_name}_wrapper [current_fileset]
+update_compile_order -fileset sources_1
+write_hw_platform -fixed -force ./${design_name}.xsa

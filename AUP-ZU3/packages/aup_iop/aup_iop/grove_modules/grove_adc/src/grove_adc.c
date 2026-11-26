@@ -1,5 +1,6 @@
 /******************************************************************************
- *  Copyright (c) 2020, Xilinx, Inc.
+ *  Copyright (c) 2020-2022, Xilinx, Inc.
+ *  Copyright (C) 2022-2026 Advanced Micro Devices, Inc.
  *  All rights reserved.
  * 
  *  Redistribution and use in source and binary forms, with or without 
@@ -61,16 +62,6 @@
 #define REG_ADDR_RESULT        0x00
 #define REG_ADDR_CONFIG        0x02
 
-#define MAX_ADC 2
-
-struct grove_adc_pin_info {
-	int sda;
-	int scl;
-};
-
-static struct grove_adc_pin_info pin_info[MAX_ADC];
-static int num_adcs;
-
 // Read from a Register
 u32 read_adc(grove_adc device, u8 reg){
    u8 data_buffer[2];
@@ -102,11 +93,6 @@ void write_adc(grove_adc device, u8 reg, u32 data, u8 bytes){
 }
 
 grove_adc grove_adc_init_pins(int sda, int scl) {
-//	for (int i = 0; i < num_adcs; ++i) {
-//		if (pin_info[i].sda == sda and pin_info[i].scl == scl) {
-//			return i;
-//		}
-//	}
 	i2c device = i2c_open(sda, scl);
 	write_adc(device, REG_ADDR_CONFIG, 0x20, 1);
 	return device;
